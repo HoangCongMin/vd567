@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <script src="angular.min.js"></script>
+</head>
+<body ng-controller="myController" ng-app="myApp">
+ <p>hello empleoyee,<b>{{mtn}}</b></p>
+
+ <script>
+    var app=angular.module('myApp', []);
+    app.value('mtn','101');
+    app.controller('myController',['$scope','mtn', function myController($scope,mtn) {
+        $scope.mtn=mtn;
+    }])
+ </script>
+</body>
+</html>

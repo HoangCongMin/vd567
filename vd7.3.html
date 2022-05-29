@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="angular.min.js"></script>
+</head>
+<body>
+ <h2>provider demonstration</h2>
+ <hr>
+ <script>
+     var nqt=angular.module('app',[]);
+     nqt.provider('myprovider', function () {
+         this.$get=function () {
+             return{
+                 display: function () {
+                     return'display hello from the service';
+                 },
+             };
+         };
+     });
+     nqt.controller('myController',function ($scope,myprovider) {
+         $scope.provideroutput='provideroutput';
+         $scope.displayprovider= function () {
+             $scope.flag=true;
+             $scope.provideroutput=myprovider.display();
+         };
+     })
+
+
+ </script>
+
+
+
+<div ng-app="app"  ng-controller="myController">
+    <h3> using provider</h3>
+    <button ng-model="button"  ng-click="displayprovider()" ng-disabled="flag">display</button>
+ <div ng-bind="provideroutput"></div>
+</div>
+
+</body>
+</html>
